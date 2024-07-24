@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(135deg, rgb(18, 18, 18), rgb(34, 34, 34)); 
+    color: rgb(200, 200, 200);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    transition: all 0.3s ease-in-out;
+}
+
+header {
+    background: rgb(28, 28, 28); 
+    color: rgb(255, 255, 255);
+    padding: 1rem 0;
+    text-align: center;
+    animation: slideIn 1s ease-out;
+}
+
+header h1 {
+    animation: colorChange 1.7s infinite; 
+}
+
+@keyframes colorChange {
+    50% {
+        color: rgb(0, 179, 0); /* أخضر */
+    }
+    100% {
+        color: rgb(79, 77, 70); /* أبيض */
+    }
+}
+
+main {
+    padding: 2rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+h2 {
+    border-bottom: 2px solid rgb(0, 107, 0); 
+    padding-bottom: 0.7rem;
+    color: rgb(255, 255, 255);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    margin: 0.5rem 0;
+}
+
+ul li a {
+    color: rgb(102, 204, 255); 
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+ul li a:hover {
+    color: rgb(135, 206, 250); 
+    text-shadow: 0 0 5px rgb(135, 206, 250); 
+}
+
+ul li code {
+    background: rgb(60, 60, 60); 
+    color: rgb(255, 255, 255);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+pre code {
+    display: block;
+    background: rgb(34, 34, 34); 
+    color: rgb(0, 117, 255);
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    white-space: pre;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+footer {
+    background: rgb(28, 28, 28); 
+    color: rgb(200, 200, 200);
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.contact a {
+    color: rgb(102, 204, 255); 
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact a:hover {
+    color: rgb(70, 130, 180);
+    transform: scale(1.05);
+}
+
+.social-media a {
+    color: rgb(255, 99, 71);
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-media a:hover {
+    color: rgb(102, 204, 255); 
+    transform: scale(1.2);
+}
+
+#age, #name, #crc, #abut, #birthday {
+    font-size: 14px; /* يمكنك ضبط الحجم حسب الحاجة */
+}
+
+#crc {
+    color: rgb(255, 165, 0);
+}
+
+#age span {
+    font-size: 11.7px; /* يمكنك ضبط الحجم حسب الحاجة */
+}
+
+strong {
+    color: rgb(0, 128, 0);
+}
