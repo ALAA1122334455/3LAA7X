@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&family=Cairo:wght@400;700&display=swap');
+
+        .about-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #121212, #222222);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content {
+            max-width: 900px;
+            width: 100%;
+            padding: 3rem;
+            background: rgba(28, 28, 28, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 179, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .motto {
+            font-size: 2.5rem;
+            color: #00b300;
+            text-align: center;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .gratitude {
+            font-size: 1.5rem;
+            color: #66ccff;
+            text-align: center;
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .quran-verse {
+            position: relative;
+            margin: 4rem 0;
+            padding: 2rem;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1s;
+        }
+
+        .quran-verse::before,
+        .quran-verse::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00b300, transparent);
+            animation: borderGlow 3s infinite;
+        }
+
+        .quran-verse::before {
+            top: 0;
+        }
+
+        .quran-verse::after {
+            bottom: 0;
+        }
+
+        .verse-text {
+            font-family: 'Amiri', serif;
+            font-size: 2.5rem;
+            color: #fff;
+            margin: 1rem 0;
+            line-height: 1.8;
+            position: relative;
+            text-shadow: 0 0 10px rgba(0, 179, 0, 0.3);
+        }
+
+        .verse-text::before,
+        .verse-text::after {
+            content: '۞';
+            color: #00b300;
+            margin: 0 1rem;
+            font-size: 2rem;
+            animation: rotate 6s linear infinite;
+            display: inline-block;
+        }
+
+        .light-rays {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 30%, rgba(0, 179, 0, 0.1) 70%);
+            animation: pulse 4s infinite;
+            z-index: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes borderGlow {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.7;
+            }
+        }
+
+        /* Floating particles effect */
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: rgba(0, 179, 0, 0.5);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100vw);
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <section class="about-section">
+        <div class="particles">
+            <!-- Particles will be added by JavaScript -->
+        </div>
+        <div class="light-rays"></div>
+        <div class="about-content">
+            <h2 class="motto">I am the competition</h2>
+            
+            <div class="quran-verse">
+                <div class="verse-text">وَكَانَ فَضْلُ اللَّهِ عَلَيْكَ عَظِيمًا</div>
+            </div>
+
+            <p class="gratitude">Allah has given me so much, thank you allah</p>
+        </div>
+    </section>
+
+    <script>
+        // Add floating particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            const numberOfParticles = 30;
+
+            for (let i = 0; i < numberOfParticles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random starting position
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                
+                // Random size
+                const size = Math.random() * 4 + 2;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // Random animation duration
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                
+                // Random delay
+                particle.style.animationDelay = (Math.random() * 5) + 's';
+
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        createParticles();
+    </script>
+</body>
+</html>

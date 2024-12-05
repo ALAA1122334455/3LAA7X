@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message علاء</title>
+    <style>
+        :root {
+            --primary: #B4975A;
+            --secondary: #111111;
+            --text: #ffffff;
+            --accent: #2E2E2E;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--secondary);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .title {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .arabic-name {
+            font-family: 'Noto Sans Arabic', Arial, sans-serif;
+        }
+
+        .subtitle {
+            color: var(--text);
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .chat-container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .message-box {
+            background: var(--accent);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .char-counter {
+            color: var(--primary);
+            text-align: right;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid var(--primary);
+            border-radius: 10px;
+            padding: 1rem;
+            color: var(--text);
+            font-size: 1rem;
+            resize: none;
+            margin-bottom: 1rem;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(180,151,90,0.3);
+        }
+
+        .button {
+            background: var(--primary);
+            color: var(--secondary);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(180,151,90,0.4);
+        }
+
+        .anonymous-badge {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 1rem 0;
+            border: 1px solid var(--primary);
+        }
+
+        .file-input-container {
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(180,151,90,0.1);
+            color: var(--primary);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 200px;
+            margin: 1rem 0;
+            display: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="title">Message <span class="arabic-name">علاء</span></h1>
+        <p class="subtitle">Send your anonymous message</p>
+    </header>
+
+    <main class="chat-container">
+        <div class="message-box">
+            <span class="anonymous-badge">
+                To: <span class="arabic-name">علاء</span>
+            </span>
+            <textarea id="messageInput" placeholder="Write your message here (max 777 characters)" maxlength="777"></textarea>
+            <div class="char-counter">
+                <span id="charCount">0</span> / 777 characters
+            </div>
+            <div class="file-input-container">
+                <button class="button" onclick="document.getElementById('fileInput').click()">
+                    Upload Image
+                </button>
+                <input type="file" id="fileInput" class="file-input" accept="image/*">
+                <img id="previewImage" class="preview-image" alt="Preview">
+            </div>
+            <button class="button" id="sendBtn" onclick="sendMessage()">
+                Send Message
+            </button>
+            <div class="success-message" id="successMessage">
+                Message sent successfully!
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const messageInput = document.getElementById('messageInput');
+        const charCount = document.getElementById('charCount');
+        const sendBtn = document.getElementById('sendBtn');
+        const successMessage = document.getElementById('successMessage');
+        const fileInput = document.getElementById('fileInput');
+        const previewImage = document.getElementById('previewImage');
+
+        messageInput.addEventListener('input', function() {
+            const length = this.value.length;
+            charCount.textContent = length;
+        });
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function sendMessage() {
+            const message = messageInput.value;
+            const image = fileInput.files[0];
+
+            if (message.trim() || image) {
+                const prefix = "Message to علاء:\n\n";
+                const fullMessage = prefix + message;
+
+                if (image) {
+                    // Send image with caption
+                    const formData = new FormData();
+                    formData.append('photo', image);
+                    formData.append('caption', fullMessage);
+
+                    const telegramPhotoURL = 'https://api.telegram.org/bot7417810210:AAEHGEmBB3fNUJYJqL_5fBUsfRDvdWnOIm4/sendPhoto';
+                    fetch(telegramPhotoURL + '?chat_id=749219602', {
+                        method: 'POST',
+                        body: formData
+                    });
+                } else if (message.trim()) {
+                    // Send text message only if there's no image
+                    const telegramMsgURL = `https://api.telegram.org/bot7417810210:AAEHGEmBB3fNUJYJqL_5fBUsfRDvdWnOIm4/sendMessage?chat_id=749219602&text=${encodeURIComponent(fullMessage)}`;
+                    fetch(telegramMsgURL);
+                }
+
+
+                messageInput.value = '';
+                charCount.textContent = '0';
+                fileInput.value = '';
+                previewImage.style.display = 'none';
+                
+
+                successMessage.style.display = 'block';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>

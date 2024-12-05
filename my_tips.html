@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tips</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700&display=swap');
+
+        .tips-section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #121212, #222222);
+            color: #fff;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            color: #00b300;
+            margin-bottom: 3rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #00b300;
+            animation: width-pulse 2s infinite;
+        }
+
+        .tips-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            gap: 2rem;
+        }
+
+        .tip-card {
+            background: rgba(28, 28, 28, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .tip-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .tip-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #00b300, #66ccff);
+        }
+
+        .tip-title {
+            font-size: 1.8rem;
+            color: #00b300;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .tip-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #c8c8c8;
+        }
+
+        .quran-verse {
+            font-family: 'Amiri', serif;
+            font-size: 1.4rem;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            position: relative;
+            color: #66ccff;
+            background: rgba(0, 179, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .quran-verse::before,
+        .quran-verse::after {
+            content: '۞';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00b300;
+            font-size: 1.2rem;
+        }
+
+        .quran-verse::before {
+            left: 10px;
+        }
+
+        .quran-verse::after {
+            right: 10px;
+        }
+
+        .tip-number {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            color: rgba(0, 179, 0, 0.1);
+            font-weight: bold;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes width-pulse {
+            0%, 100% {
+                width: 100px;
+            }
+            50% {
+                width: 150px;
+            }
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00b300, transparent);
+            margin: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .tips-container {
+                grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            }
+        }
+
+        /* Hover Effects */
+        .tip-card:hover .quran-verse {
+            background: rgba(0, 179, 0, 0.2);
+        }
+
+        .tip-card:hover .tip-title {
+            color: #66ccff;
+        }
+
+    </style>
+</head>
+<body>
+    <section class="tips-section">
+        <h1 class="section-title">My Tips</h1>
+        <div class="tips-container">
+            <!-- Tip 1 -->
+            <div class="tip-card" style="animation-delay: 0.2s">
+                <span class="tip-number">01</span>
+                <h2 class="tip-title">Beginnings are always difficult</h2>
+                <p class="tip-description">When you start doing something new, whatever it is, you will feel that it is difficult at first, but continue a little bit.</p>
+                <div class="quran-verse">وَأَن لَّيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ</div>
+            </div>
+
+            <!-- Tip 2 -->
+            <div class="tip-card" style="animation-delay: 0.4s">
+                <span class="tip-number">02</span>
+                <h2 class="tip-title">Trust in Allah and then in yourself</h2>
+                <p class="tip-description">This is something that cannot be learned, only acquired.</p>
+                <div class="quran-verse">وَتَوَكَّلْ عَلَى اللَّهِ ۚ وَكَفَىٰ بِاللَّهِ وَكِيلًا</div>
+            </div>
+
+            <!-- Tip 3 -->
+            <div class="tip-card" style="animation-delay: 0.6s">
+                <span class="tip-number">03</span>
+                <h2 class="tip-title">Your friends = you</h2>
+                <p class="tip-description">You are not obligated to anyone. You must always choose the right friend. I do not support being friendless, but you must choose a right friend. You can always determine relationships through your dealings with them. Be humble. Do not cut off your relationship with anyone. Be friendly with everyone, because you may need them at some point.</p>
+                <div class="quran-verse">وَقُولُوا لِلنَّاسِ حُسْنًا</div>
+            </div>
+
+            <!-- Tip 4 -->
+            <div class="tip-card" style="animation-delay: 0.8s">
+                <span class="tip-number">04</span>
+                <h2 class="tip-title">Your parents</h2>
+                <p class="tip-description">You will regret this later. Fix things with your family and live up to their expectations. They are your path to heaven and they didn't see all this in vain, did they? No matter what they did, they were right.</p>
+                <div class="quran-verse">وَاخْفِضْ لَهُمَا جَنَاحَ الذُّلِّ مِنَ الرَّحْمَةِ وَقُلْ رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا</div>
+            </div>
+
+            <!-- Tip 5 -->
+            <div class="tip-card" style="animation-delay: 1s">
+                <span class="tip-number">05</span>
+                <h2 class="tip-title">Instant pleasure</h2>
+                <p class="tip-description">Don't be a fool, what starts fast ends fast</p>
+                <div class="quran-verse">إِنَّ اللَّـهَ كَانَ عَلَيْكُمْ رَقِيبًا</div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
