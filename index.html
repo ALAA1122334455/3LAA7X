@@ -713,4 +713,145 @@
                             <span class="info-label">العمر</span>
                             <span class="info-value">16 سنة</span>
                         </div>
-                        <div c
+                        <div class="info-item">
+                            <span class="info-label">الوظيفة</span>
+                            <span class="info-value">مبرمج وطالب علم ديني</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+        <div class="container">
+            <h2 class="section-title">مهاراتي</h2>
+            <div class="skills-container">
+                <div class="skill">
+                    <div class="skill-icon">&#128187;</div>
+                    <h3>HTML</h3>
+                    <p>لدي خبرة في تصميم وبناء صفحات الويب باستخدام HTML وإنشاء هياكل ويب متجاوبة ومتوافقة مع جميع المتصفحات.</p>
+                </div>
+                <div class="skill">
+                    <div class="skill-icon">&#128218;</div>
+                    <h3>PYTHON</h3>
+                    <p>أستخدم بايثون في تطوير تطبيقات سطح المكتب والويب، وتحليل البيانات وإنشاء خوارزميات بسيطة.</p>
+                </div>
+                <div class="skill">
+                    <div class="skill-icon">&#9917;</div>
+                    <h3>كرة القدم</h3>
+                    <p>أمارس لعب كرة القدم وأتمتع بالمهارات الأساسية في اللعبة والروح الرياضية.</p>
+                </div>
+                <div class="skill">
+                    <div class="skill-icon">&#128176;</div>
+                    <h3>التجارة</h3>
+                    <p>لدي مهارات في مجال التجارة والتعامل مع الزبائن وفهم أساسيات البيع والشراء.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Quran Section -->
+    <section id="quran" class="quran-section">
+        <div class="container">
+            <h2 class="quran-title">إذاعة مستمرة</h2>
+            <p class="quran-subtitle">استمع إلى تلاوة القرآن الكريم بصوت الشيخ عبد الله الموسى.</p>
+            
+            <div class="quran-player">
+                <h3>الشيخ عبد الله الموسى</h3>
+                <div class="player-controls">
+                    <button class="player-btn">&#9664;</button>
+                    <button class="player-btn play-btn">&#9658;</button>
+                    <button class="player-btn">&#9654;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>علاء محمد مختار</h3>
+                    <p>مبرمج وطالب علم ديني</p>
+                    <div class="social-links">
+                        <a href="https://t.me/AT7XT" title="تليجرام">&#128279;</a>
+                        <a href="mailto:alaaposhnaq@gmail.com" title="البريد الإلكتروني">&#128231;</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>تواصل معي</h3>
+                    <p>البريد الإلكتروني: alaaposhnaq@gmail.com</p>
+                    <p>تليجرام: <a href="https://t.me/AT7XT" style="color:var(--turquoise); text-decoration:none;">AT7XT@</a></p>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 علاء محمد مختار. جميع الحقوق محفوظة.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // عرض الوقت بشكل ديناميكي
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
+            document.getElementById('dynamic-time').textContent = timeString;
+        }
+        
+        // تحديث الوقت كل ثانية
+        setInterval(updateTime, 1000);
+        updateTime(); // تشغيل فوري
+        
+        // إنشاء جزيئات متحركة
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // حجم عشوائي
+                const size = Math.random() * 20 + 5;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // موقع عشوائي
+                particle.style.left = Math.random() * 100 + 'vw';
+                particle.style.top = Math.random() * 100 + 'vh';
+                
+                // تأخير عشوائي في التحريك
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                // مدة عشوائية للتحريك
+                particle.style.animationDuration = Math.random() * 30 + 15 + 's';
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // تشغيل الدالات عند تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+        });
+
+        // التمرير السلس للروابط الداخلية
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
